@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grantaly - Transform Your Federal Grant Proposals</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --comet-green: #00ff88;
+            --dark-green: #00cc6a;
+            --light-green: #4dffaa;
+            --bg-dark: #0a0a0a;
+            --bg-darker: #050505;
+            --text-light: #ffffff;
+            --text-gray: #cccccc;
+            --accent: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-light);
+            background: var(--bg-dark);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--comet-green);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--comet-green);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--comet-green);
+            border: 1px solid var(--comet-green);
+        }
+
+        .btn-outline:hover {
+            background: var(--comet-green);
+            color: var(--bg-dark);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--comet-green), var(--dark-green));
+            color: var(--bg-dark);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(to bottom, var(--bg-darker), var(--bg-dark));
+            overflow: hidden;
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, var(--comet-green), transparent),
+                radial-gradient(2px 2px at 40px 70px, var(--light-green), transparent),
+                radial-gradient(1px 1px at 90px 40px, var(--comet-green), transparent),
+                radial-gradient(1px 1px at 130px 80px, var(--light-green), transparent),
+                radial-gradient(2px 2px at 160px 30px, var(--comet-green), transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: twinkle 4s infinite;
+        }
+
+
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 0.4; }
+        }
+
+        /* Enhanced Comet Effects */
+        .comet {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--comet-green);
+            border-radius: 50%;
+            box-shadow: 0 0 6px var(--comet-green);
+        }
+
+        .comet::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(to right, var(--comet-green), transparent);
+            transform-origin: 0 50%;
+            animation: comet-tail 3s linear infinite;
+        }
+
+
+
+        @keyframes comet-tail {
+            0% {
+                transform: translateX(-100px) translateY(100px) rotate(-45deg);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% {
+                transform: translateX(100px) translateY(-100px) rotate(-45deg);
+                opacity: 0;
+            }
+        }
+
+
+
+
+
+
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 10;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--comet-green), var(--light-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(0, 255, 136, 0.3); }
+            to { text-shadow: 0 0 30px rgba(0, 255, 136, 0.6); }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+        }
+
+        .hero .btn {
+            font-size: 1.1rem;
+            padding: 1rem 2rem;
+            margin: 0 1rem;
+        }
+
+        /* Cursor Trail and Glow Effects - Removed for Performance */
+
+        /* Success Metrics Banner */
+        .success-metrics {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 204, 106, 0.05));
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(0, 255, 136, 0.2);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .metrics-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .metric-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(26, 26, 26, 0.6);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .metric-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 255, 136, 0.2);
+        }
+
+        .metric-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--comet-green);
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--comet-green), var(--light-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .metric-label {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .trust-indicators {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .trust-badge {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--comet-green);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .trust-badge:hover {
+            background: rgba(0, 255, 136, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* University Logos Ticker */
+        .university-ticker {
+            background: rgba(26, 26, 26, 0.8);
+            padding: 2rem 0;
+            border-top: 1px solid rgba(0, 255, 136, 0.1);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+        }
+
+        .ticker-content {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .ticker-content h3 {
+            color: var(--comet-green);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .ticker {
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+        }
+
+        .ticker-logos {
+            display: inline-flex;
+            animation: scroll 30s linear infinite;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .university-logo {
+            height: 40px;
+            width: auto;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+            object-fit: contain;
+        }
+
+        .university-logo:hover {
+            opacity: 1;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--comet-green);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(26, 26, 26, 0.5);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 255, 136, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--comet-green);
+            margin-bottom: 1rem;
+        }
+
+        /* Video Demo Section */
+        .video-demo {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, rgba(5, 5, 5, 0.9), rgba(10, 10, 10, 0.9));
+            border-top: 1px solid rgba(0, 255, 136, 0.1);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+        }
+
+        .demo-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .video-demo h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--comet-green);
+        }
+
+        .demo-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .video-container {
+            margin-bottom: 3rem;
+        }
+
+        .video-placeholder {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(10, 10, 10, 0.9));
+            border-radius: 15px;
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .video-placeholder:hover {
+            border-color: var(--comet-green);
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .video-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0, 255, 136, 0.1), rgba(0, 204, 106, 0.05));
+            z-index: 1;
+        }
+
+        .play-button {
+            position: relative;
+            z-index: 3;
+            transition: transform 0.3s ease;
+        }
+
+        .video-placeholder:hover .play-button {
+            transform: scale(1.1);
+        }
+
+        .video-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 2rem;
+            text-align: left;
+            z-index: 2;
+        }
+
+        .video-overlay h3 {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .video-overlay p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .demo-cta {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 5rem 2rem;
+            background: rgba(5, 5, 5, 0.8);
+        }
+
+        .pricing-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .pricing h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--comet-green);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: rgba(26, 26, 26, 0.8);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--comet-green);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+        }
+
+        .pricing-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--comet-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            color: var(--comet-green);
+            margin: 1rem 0;
+        }
+
+        .price-period {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .features-list li {
+            padding: 0.5rem 0;
+            color: var(--text-gray);
+        }
+
+        .features-list li::before {
+            content: '✓';
+            color: var(--comet-green);
+            margin-right: 0.5rem;
+        }
+
+        /* Competitive Advantage Section */
+        .competitive-advantage {
+            padding: 5rem 2rem;
+            background: rgba(10, 10, 10, 0.9);
+            border-top: 1px solid rgba(0, 255, 136, 0.1);
+        }
+
+        .advantage-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .competitive-advantage h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--comet-green);
+        }
+
+        .advantage-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 3rem;
+        }
+
+        .comparison-table {
+            background: rgba(26, 26, 26, 0.8);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .comparison-header {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            background: rgba(0, 255, 136, 0.1);
+        }
+
+        .header-cell {
+            padding: 1.5rem;
+            font-weight: bold;
+            color: var(--text-light);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .header-cell.traditional {
+            background: rgba(100, 150, 255, 0.1);
+            color: #6496ff;
+        }
+
+        .header-cell.ai-powered {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--comet-green);
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+        }
+
+        .comparison-row:last-child {
+            border-bottom: none;
+        }
+
+        .row-label {
+            padding: 1.5rem;
+            text-align: left;
+            color: var(--text-light);
+            font-weight: 500;
+            background: rgba(26, 26, 26, 0.5);
+        }
+
+        .traditional-cell {
+            padding: 1.5rem;
+            color: #6496ff;
+            background: rgba(100, 150, 255, 0.05);
+        }
+
+        .ai-cell {
+            padding: 1.5rem;
+            color: var(--comet-green);
+            background: rgba(0, 255, 136, 0.05);
+        }
+
+
+
+        /* Success Stories Section */
+        .success-stories {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, rgba(5, 5, 5, 0.9), rgba(10, 10, 10, 0.9));
+            border-top: 1px solid rgba(0, 255, 136, 0.1);
+        }
+
+        .stories-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .success-stories h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--comet-green);
+        }
+
+        .stories-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 3rem;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .story-card {
+            background: rgba(26, 26, 26, 0.8);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.2);
+            border-color: var(--comet-green);
+        }
+
+        .story-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .institution-logo {
+            font-size: 2.5rem;
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 255, 136, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+        }
+
+        .story-meta h3 {
+            color: var(--comet-green);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .grant-amount {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .story-quote {
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .story-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .stat {
+            background: rgba(0, 255, 136, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+        }
+
+        .stat-number {
+            display: block;
+            color: var(--comet-green);
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label {
+            color: var(--text-gray);
+            font-size: 0.8rem;
+        }
+
+        .stories-cta {
+            background: rgba(26, 26, 26, 0.8);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .stories-cta h3 {
+            color: var(--comet-green);
+            margin-bottom: 1rem;
+        }
+
+        .stories-cta p {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+        }
+
+        /* AI Proposal Analyzer Section */
+        .proposal-analyzer {
+            padding: 5rem 2rem;
+            background: rgba(5, 5, 5, 0.9);
+            border-top: 1px solid rgba(0, 255, 136, 0.1);
+        }
+
+        .analyzer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .proposal-analyzer h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--comet-green);
+        }
+
+        .analyzer-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 3rem;
+        }
+
+        .analyzer-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: rgba(26, 26, 26, 0.8);
+            color: var(--text-gray);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .tab-btn.active,
+        .tab-btn:hover {
+            background: var(--comet-green);
+            color: var(--bg-dark);
+            border-color: var(--comet-green);
+        }
+
+        .tab-content {
+            display: none;
+            text-align: left;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .upload-area {
+            background: rgba(26, 26, 26, 0.8);
+            padding: 3rem;
+            border-radius: 15px;
+            border: 2px dashed rgba(0, 255, 136, 0.3);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .upload-area:hover {
+            border-color: var(--comet-green);
+            background: rgba(26, 26, 26, 0.9);
+        }
+
+        .upload-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .upload-area h3 {
+            color: var(--comet-green);
+            margin-bottom: 1rem;
+        }
+
+        .upload-area p {
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+        }
+
+        .file-info {
+            display: block;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .demo-content h3 {
+            color: var(--comet-green);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .demo-proposal {
+            background: rgba(26, 26, 26, 0.8);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .demo-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+
+        .demo-section h4 {
+            color: var(--comet-green);
+            margin-bottom: 1rem;
+        }
+
+        .demo-text {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .ai-feedback {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .feedback-score {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .feedback-score.good {
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--comet-green);
+        }
+
+        .feedback-score.poor {
+            background: rgba(255, 100, 100, 0.2);
+            color: #ff6464;
+        }
+
+        .feedback-tip {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .template-card {
+            background: rgba(26, 26, 26, 0.8);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .template-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 255, 136, 0.2);
+            border-color: var(--comet-green);
+        }
+
+        .template-card h4 {
+            color: var(--comet-green);
+            margin-bottom: 1rem;
+        }
+
+        .template-card p {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .template-tag {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--comet-green);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 204, 106, 0.05));
+            border-top: 1px solid rgba(0, 255, 136, 0.2);
+            text-align: center;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--comet-green);
+        }
+
+        .final-cta p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-features {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .cta-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            padding: 3rem 2rem 1rem;
+            text-align: center;
+            border-top: 1px solid rgba(0, 255, 136, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            color: var(--text-gray);
+        }
+
+        /* Auth Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: var(--accent);
+            margin: 5% auto;
+            padding: 2rem;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .close {
+            color: var(--text-gray);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: var(--comet-green);
+        }
+
+        .form-group {
+            margin: 1rem 0;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-radius: 5px;
+            color: var(--text-light);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--comet-green);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .btn {
+                display: block;
+                margin: 0.5rem 0;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">Grantaly</a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#demo">Demo</a></li>
+                <li><a href="#competitive">Comparison</a></li>
+                <li><a href="#success-stories">Success Stories</a></li>
+                <li><a href="#analyzer">Proposal Analyzer</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="#" class="btn btn-outline" onclick="openModal('signin')">Sign In</a>
+                <a href="#" class="btn btn-primary" onclick="openModal('signup')">Get Started</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="stars"></div>
+        <div class="comet" style="top: 20%; left: 10%;"></div>
+        <div class="comet" style="top: 60%; right: 20%; animation-delay: -1s;"></div>
+        <div class="comet" style="top: 80%; left: 70%; animation-delay: -2s;"></div>
+        
+
+        
+        <div class="hero-content">
+            <h1>Transform Federal Grant Proposals with AI</h1>
+            <p>Leverage cutting-edge artificial intelligence to craft compelling, winning federal grant proposals. Join leading universities and research institutions in revolutionizing grant writing.</p>
+            <a href="#" class="btn btn-primary" onclick="openModal('signup')">Start Writing Now</a>
+            <a href="#features" class="btn btn-outline">Explore Features</a>
+        </div>
+    </section>
+
+    <!-- Success Metrics Banner -->
+    <section class="success-metrics">
+        <div class="metrics-container">
+            <div class="metric-item">
+                <div class="metric-number" data-target="500">0</div>
+                <div class="metric-label">Institutions Trust Us</div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-number" data-target="2000">0</div>
+                <div class="metric-label">$2B+ Grants Secured</div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-number" data-target="85">0</div>
+                <div class="metric-label">Success Rate</div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-number" data-target="47">0</div>
+                <div class="metric-label">Live Proposals</div>
+            </div>
+        </div>
+        <div class="trust-indicators">
+            <span class="trust-badge">SOC 2 Compliant</span>
+            <span class="trust-badge">FedRAMP Ready</span>
+            <span class="trust-badge">HIPAA Certified</span>
+        </div>
+    </section>
+
+    <!-- University Ticker -->
+    <section class="university-ticker">
+        <div class="ticker-content">
+            <h3>Trusted by Leading Research Institutions</h3>
+            <div class="ticker">
+                <div class="ticker-logos">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/200px-MIT_logo.svg.png" alt="MIT" class="university-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Seal_of_Leland_Stanford_Junior_University.svg" alt="Stanford" class="university-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Harvard_University_coat_of_arms.svg" alt="Harvard" class="university-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg" alt="UC Berkeley" class="university-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Seal_of_the_California_Institute_of_Technology.svg" alt="Caltech" class="university-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Princeton_seal.svg" alt="Princeton" class="university-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/07/Yale_University_Shield_1.svg" alt="Yale" class="university-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Columbia_coat_of_arms_no_crest.svg" alt="Columbia" class="university-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/7/79/University_of_Chicago_shield.svg" alt="University of Chicago" class="university-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/3/3e/University_of_Maryland_seal.svg" alt="UMD" class="university-logo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2>Intelligent Grant Writing Technology</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <h3>AI-Powered Writing Assistant</h3>
+                <p>Advanced natural language processing analyzes successful federal grants to optimize your proposal structure, language, and compliance requirements.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Data-Driven Insights</h3>
+                <p>Real-time analysis of funding agency preferences, reviewer feedback patterns, and success metrics to maximize your proposal's impact.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>Compliance Verification</h3>
+                <p>Automated checking against federal guidelines, formatting requirements, and agency-specific criteria to ensure perfect compliance.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Accelerated Workflow</h3>
+                <p>Reduce proposal development time by 60% with intelligent templates, automated sections, and collaborative editing features.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Success Prediction</h3>
+                <p>ML algorithms evaluate proposal strength and provide recommendations to improve funding probability before submission.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Enterprise Security</h3>
+                <p>Bank-level encryption, SOC 2 compliance, and secure collaboration tools protect your sensitive research and institutional data.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Demo Section -->
+    <section class="video-demo" id="demo">
+        <div class="demo-container">
+            <h2>See Grantaly in Action</h2>
+            <p class="demo-subtitle">Watch how AI transforms grant writing from concept to submission in minutes</p>
+            
+            <div class="video-container">
+                <div class="video-placeholder">
+                    <div class="play-button">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                            <circle cx="30" cy="30" r="30" fill="rgba(0, 255, 136, 0.9)"/>
+                            <path d="M25 20L40 30L25 40V20Z" fill="white"/>
+                        </svg>
+                    </div>
+                    <div class="video-overlay">
+                        <h3>Grantaly AI Platform Demo</h3>
+                        <p>3:45 min • See the complete workflow</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="demo-cta">
+                <a href="#" class="btn btn-primary" onclick="openModal('signup')">Start Free Trial</a>
+                <a href="#" class="btn btn-outline">Schedule Live Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="pricing-container">
+            <h2>Choose Your Plan</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Basic</h3>
+                    <div class="price">$99<span class="price-period">/month</span></div>
+                    <ul class="features-list">
+                        <li>Up to 5 proposals per month</li>
+                        <li>AI writing assistance</li>
+                        <li>Basic compliance checking</li>
+                        <li>Standard templates</li>
+                        <li>Email support</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline" onclick="selectPlan('basic')">Get Started</a>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <h3>Premium</h3>
+                    <div class="price">$199<span class="price-period">/month</span></div>
+                    <ul class="features-list">
+                        <li>Unlimited proposals</li>
+                        <li>Advanced AI insights</li>
+                        <li>Success prediction analytics</li>
+                        <li>Custom templates</li>
+                        <li>Collaboration tools</li>
+                        <li>Priority support</li>
+                        <li>Training workshops</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary" onclick="selectPlan('premium')">Most Popular</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">Custom<span class="price-period">pricing</span></div>
+                    <ul class="features-list">
+                        <li>Unlimited everything</li>
+                        <li>Custom AI training</li>
+                        <li>White-label solution</li>
+                        <li>API access</li>
+                        <li>Dedicated success manager</li>
+                        <li>Custom integrations</li>
+                        <li>SLA guarantees</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline" onclick="contactSales()">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competitive Advantage Section -->
+    <section class="competitive-advantage" id="competitive">
+        <div class="advantage-container">
+            <h2>Traditional vs. AI-Powered Grant Writing</h2>
+            <p class="advantage-subtitle">See how AI transforms the grant writing process</p>
+            
+            <div class="comparison-table">
+                <div class="comparison-header">
+                    <div class="header-cell"></div>
+                    <div class="header-cell traditional">Traditional Method</div>
+                    <div class="header-cell ai-powered">Grantaly AI</div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="row-label">Time to Complete</div>
+                    <div class="traditional-cell">4-6 weeks</div>
+                    <div class="ai-cell">1-2 weeks</div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="row-label">Success Rate</div>
+                    <div class="traditional-cell">15-25%</div>
+                    <div class="ai-cell">75-85%</div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="row-label">Compliance Errors</div>
+                    <div class="traditional-cell">5-10 per proposal</div>
+                    <div class="ai-cell">0-1 per proposal</div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="row-label">Cost per Proposal</div>
+                    <div class="traditional-cell">$15,000-25,000</div>
+                    <div class="ai-cell">$199/month</div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="row-label">Expertise Required</div>
+                    <div class="traditional-cell">Senior grant writer</div>
+                    <div class="ai-cell">Any researcher</div>
+                </div>
+            </div>
+            
+
+        </div>
+    </section>
+
+    <!-- Success Stories Section -->
+    <section class="success-stories" id="success-stories">
+        <div class="stories-container">
+            <h2>Success Stories from Leading Institutions</h2>
+            <p class="stories-subtitle">See how Grantaly transformed grant writing for research institutions</p>
+            
+            <div class="stories-grid">
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="institution-logo">🏥</div>
+                        <div class="story-meta">
+                            <h3>Johns Hopkins Medicine</h3>
+                            <span class="grant-amount">$2.4M NIH Grant</span>
+                        </div>
+                    </div>
+                    <p class="story-quote">"Grantaly's AI reduced our proposal development time from 6 weeks to 10 days while improving our success rate from 20% to 85%."</p>
+                    <div class="story-stats">
+                        <div class="stat">
+                            <span class="stat-number">85%</span>
+                            <span class="stat-label">Success Rate</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">10 days</span>
+                            <span class="stat-label">Time Saved</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="institution-logo">🎓</div>
+                        <div class="story-meta">
+                            <h3>Stanford University</h3>
+                            <span class="grant-amount">$1.8M NSF Grant</span>
+                        </div>
+                    </div>
+                    <p class="story-quote">"The AI compliance checker caught 12 critical errors that would have disqualified our proposal. It's like having an expert reviewer on your team."</p>
+                    <div class="story-stats">
+                        <div class="stat">
+                            <span class="stat-number">12</span>
+                            <span class="stat-label">Errors Caught</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Compliance</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="institution-logo">🔬</div>
+                        <div class="story-meta">
+                            <h3>MIT Research Lab</h3>
+                            <span class="grant-amount">$3.2M DoD Grant</span>
+                        </div>
+                    </div>
+                    <p class="story-quote">"Grantaly's success prediction model helped us identify weak sections and improve our proposal score from 78 to 94 points."</p>
+                    <div class="story-stats">
+                        <div class="stat">
+                            <span class="stat-number">94</span>
+                            <span class="stat-label">Final Score</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">+16</span>
+                            <span class="stat-label">Points Gained</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stories-cta">
+                <h3>Join These Success Stories</h3>
+                <p>Start your free trial and see the difference AI-powered grant writing can make</p>
+                <a href="#" class="btn btn-primary" onclick="openModal('signup')">Start Free Trial</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Proposal Analyzer Section -->
+    <section class="proposal-analyzer" id="analyzer">
+        <div class="analyzer-container">
+            <h2>AI Proposal Analyzer</h2>
+            <p class="analyzer-subtitle">Get instant feedback on your existing proposals</p>
+            
+            <div class="analyzer-tabs">
+                <button class="tab-btn active" data-tab="upload">Upload Proposal</button>
+                <button class="tab-btn" data-tab="demo">Live Demo</button>
+                <button class="tab-btn" data-tab="templates">Templates</button>
+            </div>
+            
+            <div class="tab-content active" id="upload-tab">
+                <div class="upload-area">
+                    <div class="upload-icon">📄</div>
+                    <h3>Upload Your Proposal</h3>
+                    <p>Get instant AI-powered feedback on compliance, structure, and success probability</p>
+                    <input type="file" id="proposalFile" accept=".pdf,.doc,.docx" style="display: none;">
+                    <button class="btn btn-outline" onclick="document.getElementById('proposalFile').click()">Choose File</button>
+                    <span class="file-info">PDF, Word, or Google Docs accepted</span>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="demo-tab">
+                <div class="demo-content">
+                    <h3>See AI Analysis in Action</h3>
+                    <div class="demo-proposal">
+                        <div class="demo-section">
+                            <h4>Project Summary</h4>
+                            <p class="demo-text">This project aims to develop innovative solutions for sustainable energy production through advanced nanotechnology applications.</p>
+                            <div class="ai-feedback">
+                                <span class="feedback-score good">Score: 8.5/10</span>
+                                <span class="feedback-tip">Strong opening, consider adding specific metrics</span>
+                            </div>
+                        </div>
+                        <div class="demo-section">
+                            <h4>Methodology</h4>
+                            <p class="demo-text">We will use various methods to achieve our goals.</p>
+                            <div class="ai-feedback">
+                                <span class="feedback-score poor">Score: 3.2/10</span>
+                                <span class="feedback-tip">Too vague. Add specific procedures and timeline</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="templates-tab">
+                <div class="templates-grid">
+                    <div class="template-card">
+                        <h4>NIH Research Grant</h4>
+                        <p>Comprehensive template for National Institutes of Health funding</p>
+                        <span class="template-tag">Healthcare</span>
+                    </div>
+                    <div class="template-card">
+                        <h4>NSF Graduate Research</h4>
+                        <p>Structured template for National Science Foundation proposals</p>
+                        <span class="template-tag">Research</span>
+                    </div>
+                    <div class="template-card">
+                        <h4>DoD SBIR/STTR</h4>
+                        <p>Military-focused template for defense innovation grants</p>
+                        <span class="template-tag">Defense</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <div class="cta-container">
+            <h2>Ready to Transform Your Grant Writing?</h2>
+            <p>Join 500+ leading institutions already using AI to secure millions in federal funding</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary" onclick="openModal('signup')">Start Free Trial</a>
+                <a href="#" class="btn btn-outline">Schedule Demo</a>
+            </div>
+            <div class="cta-features">
+                <div class="cta-feature">
+                    <span class="cta-icon">⚡</span>
+                    <span>14-day free trial</span>
+                </div>
+                <div class="cta-feature">
+                    <span class="cta-icon">🔒</span>
+                    <span>No credit card required</span>
+                </div>
+                <div class="cta-feature">
+                    <span class="cta-icon">🎯</span>
+                    <span>Instant AI analysis</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Grantaly. All rights reserved. | Empowering research through intelligent grant writing.</p>
+        </div>
+    </footer>
+
+    <!-- Auth Modals -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Cursor Effects Removed for Performance
+
+        // Modal functionality
+        function openModal(type) {
+            const modal = document.getElementById('authModal');
+            const content = document.getElementById('modalContent');
+            
+            if (type === 'signin') {
+                content.innerHTML = `
+                    <h2 style="color: var(--comet-green); margin-bottom: 1rem;">Sign In to Grantaly</h2>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="Password" required>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="processSignIn()">Sign In</button>
+                    <p style="text-align: center; margin-top: 1rem; color: var(--text-gray);">
+                        Don't have an account? <a href="#" onclick="openModal('signup')" style="color: var(--comet-green);">Sign up here</a>
+                    </p>
+                `;
+            } else {
+                content.innerHTML = `
+                    <h2 style="color: var(--comet-green); margin-bottom: 1rem;">Start Your Free Trial</h2>
+                    <div class="form-group">
+                        <input type="text" placeholder="Full name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Work email address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Institution name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="Create password" required>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="processSignUp()">Start Free Trial</button>
+                    <p style="text-align: center; margin-top: 1rem; color: var(--text-gray); font-size: 0.9rem;">
+                        By signing up, you agree to our Terms of Service and Privacy Policy
+                    </p>
+                `;
+            }
+            
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('authModal').style.display = 'none';
+        }
+
+        function processSignIn() {
+            alert('Welcome back! Redirecting to your dashboard...');
+            closeModal();
+        }
+
+        function processSignUp() {
+            alert('Account created successfully! Welcome to Grantaly. Redirecting to the AI editor...');
+            closeModal();
+        }
+
+        function selectPlan(plan) {
+            alert(`You selected the ${plan.charAt(0).toUpperCase() + plan.slice(1)} plan. Redirecting to checkout...`);
+        }
+
+        function contactSales() {
+            alert('Thank you for your interest! Our enterprise sales team will contact you within 24 hours.');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('authModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Add more comets dynamically
+        function createComet() {
+            const comet = document.createElement('div');
+            comet.className = 'comet';
+            comet.style.top = Math.random() * 100 + '%';
+            comet.style.left = Math.random() * 100 + '%';
+            comet.style.animationDelay = Math.random() * 3 + 's';
+            document.querySelector('.hero').appendChild(comet);
+            
+            setTimeout(() => {
+                comet.remove();
+            }, 3000);
+        }
+
+        // Create comets periodically
+        setInterval(createComet, 2000);
+
+        // Success Metrics Animation
+        function animateMetrics() {
+            const metrics = document.querySelectorAll('.metric-number');
+            metrics.forEach(metric => {
+                const target = parseInt(metric.getAttribute('data-target'));
+                const duration = 2000; // 2 seconds
+                const increment = target / (duration / 16); // 60fps
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    metric.textContent = Math.floor(current).toLocaleString();
+                }, 16);
+            });
+        }
+
+
+
+        // Tab System for Proposal Analyzer
+        function initTabs() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const targetTab = btn.getAttribute('data-tab');
+                    
+                    // Remove active class from all tabs and contents
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked tab and corresponding content
+                    btn.classList.add('active');
+                    document.getElementById(`${targetTab}-tab`).classList.add('active');
+                });
+            });
+        }
+
+        // File Upload Handler
+        function handleFileUpload() {
+            const fileInput = document.getElementById('proposalFile');
+            fileInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    // Simulate AI analysis
+                    setTimeout(() => {
+                        alert(`AI Analysis Complete!\n\nFile: ${file.name}\nCompliance Score: 92%\nSuccess Probability: 78%\nRecommendations: 3 improvements suggested`);
+                    }, 2000);
+                }
+            });
+        }
+
+        // Video Demo Handler
+        function initVideoDemo() {
+            const videoPlaceholder = document.querySelector('.video-placeholder');
+            if (videoPlaceholder) {
+                videoPlaceholder.addEventListener('click', () => {
+                    // In a real implementation, this would open a video player or modal
+                    // For now, we'll show an alert with demo information
+                    alert(`🎬 Grantaly Platform Demo\n\nThis demo shows:\n• AI-powered proposal generation\n• Real-time compliance checking\n• Success probability scoring\n• Collaborative editing tools\n\nDuration: 3:45 minutes\n\nTo schedule a live demo, contact our team!`);
+                });
+            }
+        }
+
+        // Initialize all new features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate metrics when they come into view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateMetrics();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            const metricsSection = document.querySelector('.success-metrics');
+            if (metricsSection) {
+                observer.observe(metricsSection);
+            }
+            
+
+            
+            // Initialize tabs
+            initTabs();
+            
+            // Initialize file upload
+            handleFileUpload();
+            
+            // Initialize video demo
+            initVideoDemo();
+        });
+    </script>
+</body>
+</html>
