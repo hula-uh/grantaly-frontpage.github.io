@@ -2727,10 +2727,9 @@
         }
 
         function initializeTheme() {
-            // Check for saved theme preference or system preference
+            // Check for saved theme preference, default to dark mode
             const savedTheme = localStorage.getItem('theme');
-            const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+            const theme = savedTheme || 'dark';
             
             if (theme === 'light') {
                 document.body.classList.add('light-theme');
