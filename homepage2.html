@@ -20,6 +20,765 @@
             --text-light: #ffffff;
             --text-gray: #cccccc;
             --accent: #1a1a1a;
+            
+            /* Enhanced Light theme variables */
+            --bg-light: #fafbfc;
+            --bg-lighter: #ffffff;
+            --text-dark: #1e293b;
+            --text-gray-light: #475569;
+            --text-muted: #64748b;
+            --accent-light: #f1f5f9;
+            --border-light: #e2e8f0;
+            --shadow-light: rgba(0, 0, 0, 0.06);
+            --card-bg: #ffffff;
+            --section-bg: #f8fafc;
+            --gradient-start: #f0f9ff;
+            --gradient-end: #e0f2fe;
+            --comet-green-soft: #059669;
+            --comet-green-lighter: #10b981;
+            --comet-green-bright: #00d977;
+            --highlight-bg: #ecfdf5;
+            --highlight-border: #6ee7b7;
+            --highlight-gradient: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            --subtle-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --medium-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --large-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --glow-shadow: 0 0 20px rgba(0, 217, 119, 0.15);
+            --card-gradient: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            --hero-gradient: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #bae6fd 100%);
+            --success-gradient: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 50%, #a7f3d0 100%);
+        }
+
+        /* Light theme styles */
+        body.light-theme {
+            background: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        /* Header & Navigation */
+        body.light-theme header {
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid var(--border-light);
+            backdrop-filter: blur(20px);
+            box-shadow: var(--subtle-shadow);
+        }
+
+        body.light-theme .nav-links a {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        body.light-theme .nav-links a:hover {
+            color: var(--comet-green-bright);
+        }
+
+        /* Hero Section */
+        body.light-theme .hero {
+            background: var(--hero-gradient);
+            position: relative;
+        }
+
+        body.light-theme .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(0, 217, 119, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(5, 150, 105, 0.04) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* Enhanced hero background for better star visibility in light mode */
+        body.light-theme .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 15% 25%, rgba(5, 150, 105, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 85% 75%, rgba(16, 185, 129, 0.10) 0%, transparent 40%),
+                radial-gradient(circle at 45% 85%, rgba(0, 217, 119, 0.08) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        body.light-theme .hero h1 {
+            background: linear-gradient(135deg, var(--comet-green-bright), var(--comet-green-lighter));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+        }
+
+        body.light-theme .hero p {
+            color: var(--text-gray-light);
+        }
+
+        /* Success Metrics */
+        body.light-theme .success-metrics {
+            background: var(--success-gradient);
+            border-top: 1px solid var(--highlight-border);
+            border-bottom: 1px solid var(--highlight-border);
+        }
+
+        body.light-theme .metric-item {
+            background: var(--card-gradient);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--medium-shadow);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        body.light-theme .metric-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 217, 119, 0.08), transparent);
+            transition: left 0.6s ease;
+        }
+
+        body.light-theme .metric-item:hover::before {
+            left: 100%;
+        }
+
+        body.light-theme .metric-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--large-shadow), var(--glow-shadow);
+            border-color: var(--comet-green-bright);
+        }
+
+        body.light-theme .metric-number {
+            background: linear-gradient(135deg, var(--comet-green-bright), var(--comet-green-lighter));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* University Ticker */
+        body.light-theme .university-ticker {
+            background: var(--section-bg);
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        body.light-theme .university-ticker h3 {
+            color: var(--comet-green-bright);
+        }
+
+        /* Feature Cards */
+        body.light-theme .feature-card {
+            background: var(--card-gradient);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--medium-shadow);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        body.light-theme .feature-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--comet-green-bright), var(--comet-green-lighter));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        body.light-theme .feature-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        body.light-theme .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--large-shadow), var(--glow-shadow);
+            border-color: var(--comet-green-bright);
+        }
+
+        body.light-theme .feature-icon {
+            color: var(--comet-green-bright);
+        }
+
+        /* Video Demo */
+        body.light-theme .video-demo {
+            background: var(--section-bg);
+        }
+
+        body.light-theme .video-placeholder {
+            background: var(--card-gradient);
+            border: 2px solid var(--border-light);
+            box-shadow: var(--medium-shadow);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        body.light-theme .video-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(0, 217, 119, 0.04) 50%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        body.light-theme .video-placeholder:hover::before {
+            opacity: 1;
+        }
+
+        body.light-theme .video-placeholder:hover {
+            border-color: var(--comet-green-bright);
+            box-shadow: var(--large-shadow), var(--glow-shadow);
+            transform: translateY(-4px);
+        }
+
+        /* Pricing Section */
+        body.light-theme .pricing {
+            background: var(--section-bg);
+        }
+
+        body.light-theme .pricing-card {
+            background: var(--card-gradient);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--medium-shadow);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        body.light-theme .pricing-card.featured {
+            border-color: var(--comet-green-bright);
+            box-shadow: 0 0 0 1px var(--comet-green-bright), var(--large-shadow), var(--glow-shadow);
+        }
+
+        body.light-theme .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--large-shadow), var(--glow-shadow);
+        }
+
+        body.light-theme .price {
+            background: linear-gradient(135deg, var(--comet-green-bright), var(--comet-green-lighter));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Competitive Advantage */
+        body.light-theme .competitive-advantage {
+            background: var(--section-bg);
+        }
+
+        body.light-theme .comparison-table {
+            background: var(--card-gradient);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--medium-shadow);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        body.light-theme .comparison-header {
+            background: var(--highlight-gradient);
+        }
+
+        body.light-theme .header-cell.ai-powered {
+            color: var(--comet-green-bright);
+        }
+
+        body.light-theme .ai-cell {
+            color: var(--comet-green-bright);
+        }
+
+        /* Success Stories */
+        body.light-theme .success-stories {
+            background: var(--success-gradient);
+            border-top: 1px solid var(--highlight-border);
+            border-bottom: 1px solid var(--highlight-border);
+        }
+
+        body.light-theme .story-card {
+            background: var(--card-gradient);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--medium-shadow);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        body.light-theme .story-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--comet-green-bright), var(--comet-green-lighter));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        body.light-theme .story-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        body.light-theme .story-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--large-shadow), var(--glow-shadow);
+            border-color: var(--comet-green-bright);
+        }
+
+        body.light-theme .story-meta h3 {
+            color: var(--comet-green-bright);
+        }
+
+        body.light-theme .stories-cta {
+            background: var(--card-gradient);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--medium-shadow);
+            border-radius: 16px;
+        }
+
+        body.light-theme .stories-cta h3 {
+            color: var(--comet-green-bright);
+        }
+
+        body.light-theme .stories-cta p {
+            color: var(--text-gray-light);
+        }
+
+        /* Enhanced stories CTA for light theme */
+        body.light-theme .stories-cta {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 2px solid var(--highlight-border);
+        }
+
+        body.light-theme .stories-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 217, 119, 0.08), transparent);
+            transition: left 0.6s ease;
+        }
+
+        body.light-theme .stories-cta:hover::before {
+            left: 100%;
+        }
+
+        body.light-theme .stories-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--large-shadow), var(--glow-shadow);
+            border-color: var(--comet-green-bright);
+            background: linear-gradient(135deg, #ffffff 0%, #ecfdf5 100%);
+        }
+
+        /* Proposal Analyzer */
+        body.light-theme .proposal-analyzer {
+            background: var(--section-bg);
+        }
+
+        body.light-theme .upload-area {
+            background: var(--card-gradient);
+            border: 2px dashed var(--border-light);
+            box-shadow: var(--medium-shadow);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        body.light-theme .upload-area:hover {
+            border-color: var(--comet-green-bright);
+            background: var(--highlight-gradient);
+            transform: translateY(-2px);
+        }
+
+        body.light-theme .demo-proposal {
+            background: var(--card-gradient);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--medium-shadow);
+        }
+
+        body.light-theme .template-card {
+            background: var(--card-gradient);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--medium-shadow);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        body.light-theme .template-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--comet-green-bright), var(--comet-green-lighter));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        body.light-theme .template-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        body.light-theme .template-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--large-shadow), var(--glow-shadow);
+            border-color: var(--comet-green-bright);
+        }
+
+        body.light-theme .template-card h4 {
+            color: var(--comet-green-bright);
+        }
+
+        /* Final CTA */
+        body.light-theme .final-cta {
+            background: var(--success-gradient);
+            border-top: 1px solid var(--highlight-border);
+            border-bottom: 1px solid var(--highlight-border);
+        }
+
+        /* Footer */
+        body.light-theme footer {
+            background: var(--section-bg);
+            border-top: 1px solid var(--border-light);
+        }
+
+        body.light-theme .footer-section h4 {
+            color: var(--comet-green-bright);
+        }
+
+        /* Modal */
+        body.light-theme .modal-content {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--large-shadow);
+            border-radius: 16px;
+        }
+
+        /* Form Inputs */
+        body.light-theme .form-group input {
+            background: var(--card-bg);
+            border: 1px solid var(--border-light);
+            color: var(--text-dark);
+            box-shadow: var(--subtle-shadow);
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        body.light-theme .form-group input:focus {
+            border-color: var(--comet-green-bright);
+            box-shadow: 0 0 0 3px rgba(0, 217, 119, 0.1), var(--subtle-shadow);
+            outline: none;
+        }
+
+        /* Enhanced Buttons */
+        body.light-theme .btn-primary {
+            background: linear-gradient(135deg, var(--comet-green-bright) 0%, var(--comet-green-lighter) 100%);
+            color: white;
+            box-shadow: var(--medium-shadow);
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        body.light-theme .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--large-shadow), var(--glow-shadow);
+        }
+
+        body.light-theme .btn-outline {
+            color: var(--comet-green-bright);
+            border: 2px solid var(--comet-green-bright);
+            background: transparent;
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        body.light-theme .btn-outline:hover {
+            background: var(--comet-green-bright);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--medium-shadow);
+        }
+
+        /* Trust Badges */
+        body.light-theme .trust-badge {
+            background: var(--highlight-gradient);
+            color: var(--comet-green-bright);
+            border: 1px solid var(--highlight-border);
+        }
+
+        body.light-theme .trust-badge:hover {
+            background: var(--success-gradient);
+            transform: translateY(-2px);
+            box-shadow: var(--medium-shadow);
+        }
+
+        /* Security Badges */
+        body.light-theme .security-badge {
+            background: var(--highlight-gradient);
+            color: var(--comet-green-bright);
+            border: 1px solid var(--highlight-border);
+        }
+
+        /* Tab Buttons */
+        body.light-theme .tab-btn {
+            background: var(--card-gradient);
+            color: var(--text-gray-light);
+            border: 1px solid var(--border-light);
+        }
+
+        body.light-theme .tab-btn.active,
+        body.light-theme .tab-btn:hover {
+            background: var(--comet-green-bright);
+            color: white;
+            border-color: var(--comet-green-bright);
+        }
+
+        /* Template Tags */
+        body.light-theme .template-tag {
+            background: var(--highlight-gradient);
+            color: var(--comet-green-bright);
+            border: 1px solid var(--highlight-border);
+        }
+
+        /* Social Links */
+        body.light-theme .social-link {
+            color: var(--comet-green-bright);
+        }
+
+        /* Theme toggle button styles */
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-gray);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            margin-left: 1rem;
+        }
+
+
+
+        .theme-toggle:hover {
+            color: var(--comet-green);
+            background: rgba(0, 255, 136, 0.1);
+        }
+
+        body.light-theme .theme-toggle {
+            color: var(--text-gray-light);
+        }
+
+        /* Additional Light Theme Enhancements */
+        
+        /* Add subtle background patterns for light theme */
+        body.light-theme .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(0, 217, 119, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(16, 185, 129, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* Enhanced card hover effects */
+        body.light-theme .feature-card,
+        body.light-theme .story-card,
+        body.light-theme .template-card {
+            border-radius: 16px;
+            position: relative;
+        }
+
+        body.light-theme .feature-card::before,
+        body.light-theme .story-card::before,
+        body.light-theme .template-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 217, 119, 0.02) 0%, transparent 100%);
+            border-radius: 16px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        body.light-theme .feature-card:hover::before,
+        body.light-theme .story-card:hover::before,
+        body.light-theme .template-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Improved typography for light theme */
+        body.light-theme h1, 
+        body.light-theme h2, 
+        body.light-theme h3, 
+        body.light-theme h4, 
+        body.light-theme h5, 
+        body.light-theme h6 {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        body.light-theme p {
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        body.light-theme .metric-label {
+            color: var(--text-gray-light);
+            font-weight: 500;
+        }
+
+        body.light-theme .advantage-subtitle,
+        body.light-theme .stories-subtitle,
+        body.light-theme .analyzer-subtitle,
+        body.light-theme .demo-subtitle {
+            color: var(--text-gray-light);
+            font-weight: 500;
+        }
+
+        body.light-theme .story-quote {
+            color: var(--text-dark);
+            font-style: italic;
+        }
+
+        body.light-theme .grant-amount {
+            color: var(--text-gray-light);
+            font-weight: 500;
+        }
+
+        body.light-theme .stat-label {
+            color: var(--text-gray-light);
+            font-weight: 500;
+        }
+
+        body.light-theme .features-list li {
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        body.light-theme .comparison-table .row-label {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        body.light-theme .comparison-table .traditional-cell {
+            color: var(--text-gray-light);
+        }
+
+        body.light-theme .upload-area p {
+            color: var(--text-dark);
+        }
+
+        body.light-theme .template-card p {
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        body.light-theme .demo-text {
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        body.light-theme .feedback-tip {
+            color: var(--text-gray-light);
+            font-style: italic;
+        }
+
+        body.light-theme .cta-feature {
+            color: var(--text-gray-light);
+            font-weight: 500;
+        }
+
+        body.light-theme .footer-links a {
+            color: var(--text-gray-light);
+            transition: color 0.3s ease;
+        }
+
+        body.light-theme .footer-links a:hover {
+            color: var(--comet-green-bright);
+        }
+
+        body.light-theme .contact-info p {
+            color: var(--text-gray-light);
+            line-height: 1.6;
+        }
+
+        body.light-theme .legal-links a {
+            color: var(--text-gray-light);
+            transition: color 0.3s ease;
+        }
+
+        body.light-theme .legal-links a:hover {
+            color: var(--comet-green-bright);
+        }
+
+        /* Enhanced border radius for better visual appeal */
+        body.light-theme .pricing-card {
+            border-radius: 16px;
+        }
+
+        body.light-theme .comparison-table {
+            border-radius: 16px;
+        }
+
+        body.light-theme .upload-area {
+            border-radius: 16px;
+        }
+
+        body.light-theme .demo-proposal {
+            border-radius: 12px;
+        }
+
+        /* Improved focus states for accessibility */
+        body.light-theme .btn:focus,
+        body.light-theme .tab-btn:focus {
+            outline: 2px solid var(--comet-green-bright);
+            outline-offset: 2px;
+        }
+
+        /* Enhanced loading states */
+        body.light-theme .metric-item.loading {
+            background: linear-gradient(90deg, var(--card-gradient) 0%, rgba(0, 217, 119, 0.05) 50%, var(--card-gradient) 100%);
+            background-size: 200% 100%;
+            animation: loading-shimmer 1.5s infinite;
+        }
+
+        @keyframes loading-shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        body.light-theme .theme-toggle:hover {
+            color: var(--comet-green-bright);
+            background: rgba(0, 217, 119, 0.1);
         }
 
         body {
@@ -137,6 +896,17 @@
             animation: twinkle 4s infinite;
         }
 
+        /* Light theme stars - using same green colors as dark mode */
+        body.light-theme .stars {
+            background-image: 
+                radial-gradient(3px 3px at 20px 30px, var(--comet-green), transparent),
+                radial-gradient(3px 3px at 40px 70px, var(--light-green), transparent),
+                radial-gradient(2px 2px at 90px 40px, var(--comet-green), transparent),
+                radial-gradient(2px 2px at 130px 80px, var(--light-green), transparent),
+                radial-gradient(3px 3px at 160px 30px, var(--comet-green), transparent);
+            opacity: 0.9;
+        }
+
 
 
         @keyframes twinkle {
@@ -164,6 +934,19 @@
             background: linear-gradient(to right, var(--comet-green), transparent);
             transform-origin: 0 50%;
             animation: comet-tail 3s linear infinite;
+        }
+
+        /* Light theme comets - using same green colors as dark mode */
+        body.light-theme .comet {
+            background: var(--comet-green);
+            box-shadow: 0 0 10px var(--comet-green), 0 0 15px var(--light-green), 0 0 20px rgba(0, 255, 136, 0.3);
+            width: 3px;
+            height: 3px;
+        }
+
+        body.light-theme .comet::after {
+            background: linear-gradient(to right, var(--comet-green), rgba(0, 255, 136, 0.8), transparent);
+            height: 2px;
         }
 
 
@@ -445,7 +1228,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, rgba(0, 255, 136, 0.1), rgba(0, 204, 106, 0.05));
+            background: linear-gradient(45deg, transparent 30%, rgba(0, 217, 119, 0.04) 50%, transparent 70%);
             z-index: 1;
         }
 
@@ -1056,6 +1839,105 @@
             color: var(--text-gray);
         }
 
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            color: var(--comet-green);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--comet-green);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            color: var(--comet-green);
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: scale(1.1);
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+            color: var(--text-gray);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-legal {
+            text-align: left;
+            color: var(--text-gray);
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .legal-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .legal-links a:hover {
+            color: var(--comet-green);
+        }
+
+        .security-badges {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .security-badge {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--comet-green);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+        }
+
         /* Auth Modal */
         .modal {
             display: none;
@@ -1147,9 +2029,12 @@
             <div class="auth-buttons">
                 <a href="#" class="btn btn-outline" onclick="openModal('signin')">Sign In</a>
                 <a href="#" class="btn btn-primary" onclick="openModal('signup')">Get Started</a>
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">🌓</button>
             </div>
         </nav>
     </header>
+
+
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
@@ -1557,7 +2442,74 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p>&copy; 2025 Grantaly. All rights reserved. | Empowering research through intelligent grant writing.</p>
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Grantaly</h4>
+                    <p>Empowering research through intelligent grant writing. Transform your federal grant proposals with AI-powered technology.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">LinkedIn</a>
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">YouTube</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#demo">Demo</a></li>
+                        <li><a href="#analyzer">Proposal Analyzer</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">API Documentation</a></li>
+                        <li><a href="#">Training Videos</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <div class="contact-info">
+                        <p>📍 123 Innovation Drive<br>San Francisco, CA 94105</p>
+                        <p>📧 hello@grantaly.com</p>
+                        <p>📞 +1 (555) 123-4567</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <p>&copy; 2025 Grantaly. All rights reserved.</p>
+                    <div class="legal-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Policy</a>
+                        <a href="#">GDPR</a>
+                    </div>
+                </div>
+                
+                <div class="security-badges">
+                    <span class="security-badge">SOC 2 Type II</span>
+                    <span class="security-badge">FedRAMP Ready</span>
+                    <span class="security-badge">HIPAA Compliant</span>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -1747,6 +2699,50 @@
             }
         }
 
+        // Theme Toggle Functionality
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.classList.contains('light-theme') ? 'light' : 'dark';
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            if (newTheme === 'light') {
+                body.classList.add('light-theme');
+                console.log('Switched to LIGHT theme');
+            } else {
+                body.classList.remove('light-theme');
+                console.log('Switched to DARK theme');
+            }
+            
+            // Update button icon
+            const themeToggle = document.querySelector('.theme-toggle');
+            themeToggle.textContent = newTheme === 'light' ? '🌙' : '🌓';
+            
+            // Save theme preference to localStorage
+            localStorage.setItem('theme', newTheme);
+            
+            // Force a repaint to ensure CSS changes are applied
+            body.style.display = 'none';
+            body.offsetHeight; // Trigger reflow
+            body.style.display = '';
+        }
+
+        function initializeTheme() {
+            // Check for saved theme preference or system preference
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+            
+            if (theme === 'light') {
+                document.body.classList.add('light-theme');
+            }
+            
+            // Set correct button icon
+            const themeToggle = document.querySelector('.theme-toggle');
+            if (themeToggle) {
+                themeToggle.textContent = theme === 'light' ? '🌙' : '🌓';
+            }
+        }
+
         // Initialize all new features
         document.addEventListener('DOMContentLoaded', function() {
             // Animate metrics when they come into view
@@ -1774,6 +2770,9 @@
             
             // Initialize video demo
             initVideoDemo();
+
+            // Initialize theme
+            initializeTheme();
         });
     </script>
 </body>
